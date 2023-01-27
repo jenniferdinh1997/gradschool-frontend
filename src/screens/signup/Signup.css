@@ -1,6 +1,6 @@
 .signup-header {
     height: 60px;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     padding-left: 100px;
 }
 
@@ -13,15 +13,63 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .signup-form input {
-    width: 20%;
+    width: 330px;
+    height: 30px;
 }
 
 #first-name, #last-name, #email, #password {
     font-size: 20px;
     margin: 12px 0px;
-    padding-left: 40px;
+    padding-left: 30px;
+}
+
+#signup-button {
+    background-color: #78ACC1;
+    color: black;
+    width: 370px;
+    font-size: 20px;
+}
+
+.pw-requirements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+#pw-title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 0;
+}
+
+#pw-left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-right: 20px;
+}
+
+#pw-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-left: 20px;
+}
+
+#login-redirect {
+    text-align: center;
+}
+
+#login-redirect a {
+    color: #78ACC1;
+    font-weight: 600;
 }
