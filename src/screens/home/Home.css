@@ -58,12 +58,13 @@
 }
 
 .home-categories-left {
-    width: 60%;
+    width: 70%;
 }
 
 .categories-container {
     width: 70%;
     margin: 0 auto;
+    text-align: left;
 }
 
 .categories-container p {
@@ -72,19 +73,19 @@
 }
 
 .home-categories-right {
-    width: 40%;
+    width: 30%;
 }
 
 .categories-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .categories-column {
     display: flex;
     flex-direction: column;
+    margin-right: 20px;
 }
 
 #categories-heading {
@@ -104,4 +105,17 @@
 
 #submit-field:hover {
     background-color: #5FA8D3;
+}
+
+#submit-field a {
+    text-decoration: none;
+}
+
+#submit-field a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+#null-field-msg {
+    font-size: 17px;
 }

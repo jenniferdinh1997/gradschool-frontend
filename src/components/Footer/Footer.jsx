@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className="footer-container">
             <div className="footer-info">
-                <Link to="https://github.com/jenniferdinh1997/gradschool-frontend">
+                <Link>
                     <FaGithub />
                 </Link>
                 <p>Contact Us | Privacy Policy | About Us</p>
