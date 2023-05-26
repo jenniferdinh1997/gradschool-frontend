@@ -58,7 +58,7 @@
 }
 
 .home-categories-left {
-    width: 50%;
+    width: 60%;
 }
 
 .categories-container {
@@ -72,5 +72,36 @@
 }
 
 .home-categories-right {
-    width: 50%;
+    width: 40%;
+}
+
+.categories-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.categories-column {
+    display: flex;
+    flex-direction: column;
+}
+
+#categories-heading {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#submit-field {
+    font-size: 18px;
+    width: 200px;
+    background-color: #1B4965;
+    border-style: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: white;
+}
+
+#submit-field:hover {
+    background-color: #5FA8D3;
 }
