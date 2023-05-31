@@ -16,6 +16,7 @@ app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, "build")));
 
 // Defining routes
+app.use("/api/info", require("./routes/api/info"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 
