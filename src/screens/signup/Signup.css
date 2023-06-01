@@ -1,7 +1,18 @@
-.signup-header {
-    height: 60px;
-    border-bottom: 1px solid black;
-    padding-left: 100px;
+.signup-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.signup-left {
+    width: 50%;
+}
+
+.signup-right {
+    width: 50%;
+}
+
+#signup-stock-photo {
+    width: 100%;
 }
 
 #signup-title {
@@ -19,19 +30,34 @@
 .signup-form input {
     width: 330px;
     height: 30px;
+    border-radius: 15px;
 }
 
 #first-name, #last-name, #email, #password {
-    font-size: 20px;
     margin: 12px 0px;
     padding-left: 30px;
+    height: 40px;
+    border: 1px rgb(149, 148, 148) solid;
 }
 
 #signup-button {
-    background-color: #78ACC1;
-    color: black;
+    margin: 20px auto;
     width: 370px;
+    background-color: #1B4965;
+    border-style: none;
+    padding: 20px 60px;
+    border-radius: 30px;
     font-size: 20px;
+    color: white;
+}
+
+#signup-button:hover {
+    background-color: #5FA8D3;
+}
+
+#signup-section {
+    display: flex;
+    flex-direction: column;
 }
 
 .pw-requirements {
@@ -39,6 +65,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     margin-bottom: 20px;
+    font-size: 15px;
 }
 
 #pw-title {

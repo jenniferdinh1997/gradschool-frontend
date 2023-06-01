@@ -14,7 +14,7 @@ const Header = () => {
 
             <div className="header-right">
                 <button id="login-btn">
-                    <Link to="/error" id="login-link">
+                    <Link to="/signup" id="login-link">
                         <FaRegUser /> &nbsp;
                         Sign in
                     </Link>
