@@ -99,4 +99,6 @@
 #login-redirect a {
     color: #78ACC1;
     font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #78acc1;
 }

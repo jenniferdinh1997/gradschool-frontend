@@ -63,7 +63,7 @@ const Signup = () => {
                     </form>
 
                     <p id="login-redirect">Already have an account? &nbsp;
-                        <Link to="/login">Sign in</Link>
+                        <Link to="/signin">Sign in</Link>
                     </p>
                 </div>
             </div>

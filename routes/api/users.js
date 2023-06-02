@@ -1,10 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const usersCtrl = require("../../controllers/users");
 
-
-// @route   GET api/users
-// @dessc   test route
-// @access  Public
-router.get("/login", (req,res) => res.send("User route"));
+router.post(
+  "/login",
+  [
+    check("name", "Name required").not().isEmpty(),
+    check("email", "Please include a valid email").isEmail(),
+    check("password", "Password must be between 8-20 characters").isLength({
+      min: 8,
+      max: 20,
+    }),
+  ],
+  usersCtrl.login
+);
 
 module.exports = router;
