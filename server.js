@@ -4,6 +4,7 @@ const path = require("path");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const {check, validationResult} = require("express-validator/check");
+const cors = require("cors");
 
 const app = express();
 
@@ -13,6 +14,7 @@ connectDB();
 // Mounting the middleware
 app.use(express.json());
 app.use(logger("dev"));
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, "build")));
 

@@ -9,6 +9,7 @@ import { HashLink } from "react-router-hash-link";
 
 const Home = () => {
     const [selectedOp, setSelectedOp] = useState(null);
+    const [selectedField, setSelectedField] = useState(null);
     const handleRadioSelect = (e) => {
         setSelectedOp(e.target.value);
     };
@@ -104,6 +105,7 @@ const Home = () => {
                                             <input
                                                 type="radio"
                                                 name="field"
+                                                value="pharmd"
                                             />
                                             <label>Doctor of Pharmacy (PharmD)</label>
                                         </section>
@@ -111,6 +113,9 @@ const Home = () => {
                                             <input
                                                 type="radio"
                                                 name="field"
+                                                value="md"
+                                                checked={selectedField === "md"}
+                                                onChange={(e) => setSelectedField(e.target.value)}
                                             />
                                             <label>Doctor of Medicine (MD)</label>
                                         </section> 
@@ -118,6 +123,7 @@ const Home = () => {
                                             <input
                                                 type="radio"
                                                 name="field"
+                                                value="jd"
                                             />
                                             <label>Juris Doctor (JD)</label>
                                         </section> 
@@ -192,9 +198,14 @@ const Home = () => {
                                 </div>
                             </div>
                             <button id="submit-field">
-                                <Link to="/error">
+                                {selectedOp === "dr" && selectedField === "md" && (
+                                    <Link to="/tracker/dr/md">
+                                        Help me get in!
+                                    </Link>
+                                )}
+                                {/* <Link to="/error">
                                     Help me get in!
-                                </Link>
+                                </Link> */}
                             </button>
                         </div>
                     </div>

@@ -4,6 +4,8 @@ import Home from "./screens/home/Home";
 import Signup from "./screens/signup/Signup";
 import Signin from "./screens/signin/Signin";
 import Error from "./screens/error/Error";
+import Md from "./screens/md/Md";
+import MdCourse from "./screens/md/MdCourse";
 
 function App() {
     return (
@@ -21,6 +23,12 @@ function App() {
                 <Route
                     path="/error"
                     element={<Error />} />
+                <Route 
+                    path="/tracker/dr/md"
+                    element={<Md />} />
+                <Route 
+                    path="/tracker/dr/md/courses"
+                    element={<MdCourse />} />
             </Routes>
         </Router>
     )
