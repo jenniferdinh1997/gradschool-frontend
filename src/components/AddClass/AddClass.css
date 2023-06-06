@@ -1,0 +1,58 @@
+.add-class-container {
+    width: 350px;
+    margin: 20px 0px;
+    border: 2px solid #5fa8d3;;
+}
+
+.add-class-container form {
+    padding: 20px;
+}
+
+#add-class-section {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+
+.add-class-container input, .add-class-container select {
+    height: 25px;
+}
+
+.add-class-container label {
+    font-weight: bold;
+}
+
+#add-class-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#add-class-submit-btn {
+    width: 90px;
+    margin: 0px 10px;
+    background-color: #1B4965;
+    border-style: none;
+    border-radius: 5px;
+    padding: 12px;
+    color: white;
+}
+
+#add-class-submit-btn:hover {
+    background-color: #5FA8D3;
+}
+
+#add-class-cancel-btn {
+    width: 90px;
+    margin: 0px 10px;
+    background-color: white;
+    border-color:#1b4965;
+    border-radius: 5px;
+    padding: 12px;
+    color: #1b4965;
+}
+
+#add-class-cancel-btn:hover {
+    color: #5fa8d3;
+    border-color:#5fa8d3;
+}

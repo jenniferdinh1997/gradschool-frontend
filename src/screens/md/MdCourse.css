@@ -2,10 +2,34 @@
     margin-left: 220px;
 }
 
+.courses-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 100px;
+}
+
 #prereq-title {
     font-size: 30px;
 }
 
 #course-name {
     font-size: 20px;
+}
+
+#add-class-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-style: none;
+    border-radius: 15px;
+    background-color: #cae9ff;
+    color: #5fa8d3;
+    font-weight: 600;
+    padding: 5px 20px;
+}
+
+#add-class-button:hover {
+    background-color: #dcf0fe;
 }
