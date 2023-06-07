@@ -8,9 +8,10 @@ import { MdAdd } from "react-icons/md";
 import "./MdCourse.css";
 
 const MdCourse = () => {
-    const [toggleAddCourse, setToggleAddCourse] = useState(false);
+    const [course, setCourse] = useState([]);
+
     const showAddCourse = () => {
-        setToggleAddCourse(true);
+        setCourse(prevCourse => [...prevCourse, <AddClass key={prevCourse.length}/>])
     }
 
     return (
@@ -25,7 +26,7 @@ const MdCourse = () => {
                 </div>
                 <p id="course-name">Biology</p>
                 <Class />
-                {toggleAddCourse ? <AddClass /> : null}
+                {course}
                 <p>Chemistry</p>
                 <p>English</p>
                 <p>Math</p>
