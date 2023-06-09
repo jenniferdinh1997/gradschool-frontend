@@ -19,9 +19,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "build")));
 
 // Defining routes
-app.use("/api/info", require("./routes/api/info"));
+app.use("/api/class", require("./routes/api/class"));
 app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
 
 app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));

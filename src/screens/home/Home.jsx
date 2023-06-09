@@ -203,9 +203,9 @@ const Home = () => {
                                         Help me get in!
                                     </Link>
                                 )}
-                                {/* <Link to="/error">
+                                <Link to="/error">
                                     Help me get in!
-                                </Link> */}
+                                </Link>
                             </button>
                         </div>
                     </div>
