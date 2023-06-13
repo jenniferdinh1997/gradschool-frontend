@@ -1,9 +1,5 @@
 const Class = require("../models/Class");
 
-module.exports = {
-  addClass,
-};
-
 const addClass = async (req, res) => {
   const course = await Class.create({
     user: req.user,
@@ -15,4 +11,8 @@ const addClass = async (req, res) => {
     notes: req.body.notes,
   });
   res.status(201).json({ course: course });
+};
+
+module.exports = {
+  addClass,
 };

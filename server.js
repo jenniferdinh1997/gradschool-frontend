@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const connectDB = require("./config/database");
-const {check, validationResult} = require("express-validator/check");
 const cors = require("cors");
 
 const app = express();

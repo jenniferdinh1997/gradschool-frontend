@@ -3,12 +3,7 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
-const { validationResult } = require("express-validator/check");
-
-module.exports = {
-  signup,
-  login,
-};
+const { validationResult } = require("express-validator");
 
 const signup = async (req, res) => {
   const errors = validationResult(req);
@@ -16,7 +11,7 @@ const signup = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { name, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -32,7 +27,8 @@ const signup = async (req, res) => {
     });
 
     user = new User({
-      name,
+      firstName,
+      lastName,
       email,
       avatar,
       password,
@@ -58,7 +54,7 @@ const signup = async (req, res) => {
       }
     });
   } catch (error) {
-    console.error(err.message);
+    console.error(error.message);
     res.status(500).send("Server error");
   }
 };
@@ -101,4 +97,9 @@ const login = async (req, res) => {
 
 const createJWT = (user) => {
   return jwt.sign({ user }, SECRET, { expiresIn: "24h" });
+};
+
+module.exports = {
+  signup,
+  login,
 };
