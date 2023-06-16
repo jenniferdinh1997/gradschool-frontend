@@ -1,27 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Signin.css";
+import userService from "../../services/UserService";
 
 const Signin = () => {
+    const navigate = useNavigate();
+
+    const [authRequest, setAuthRequest] = useState({
+        email: "",
+        password: ""
+    });
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setAuthRequest({...authRequest, [e.target.name]: e.target.value});
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await userService.login(authRequest).then((res) => {
+            localStorage.setItem("user", JSON.stringify(res));
+        })
+        navigate("/");
+    }
+
     return (
         <>
             <Header />
             <div className="signin-container">
                 <p>Sign In</p>
-                <form className="signin-form">
+                <form className="signin-form" onSubmit={handleSubmit}>
                     <section id="signup-section">
                         <label>Email</label>
                         <input 
                             type="email"
-                            id="email"/>    
+                            name="email"
+                            id="email"
+                            value={authRequest.email}
+                            onChange={handleChange} />    
                     </section>
                     <section id="signup-section">
                         <label>Password</label>
                         <input 
                             type="password"
-                            id="password"/>    
+                            name="password"
+                            id="password"
+                            value={authRequest.password}
+                            onChange={handleChange} />    
                     </section>
                     <button
                         type="submit"

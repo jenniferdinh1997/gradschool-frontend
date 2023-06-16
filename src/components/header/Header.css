@@ -39,6 +39,12 @@
     border-style: none;
     padding: 10px 20px;
     border-radius: 30px;
+    font-family: "Cambria";
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;;
+    align-items: center;
 }
 
 #login-btn:hover {

@@ -1,11 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import SignUp from "../../assets/signup.jpg";
 import "./Signup.css";
 import userService from "../../services/UserService";
-import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -17,16 +16,27 @@ const Signup = () => {
         password: ""
     });
 
+    const [authRequest, setAuthRequest] = useState({
+        email: "",
+        password: ""
+    });
+
     const handleChange = (e) => {
         e.preventDefault();
         setUser({...user, [e.target.name]: e.target.value});
-    }
+        setAuthRequest({...authRequest, [e.target.name]: e.target.value});
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        userService.signup(user);
+        userService.signup(user).then((res) => {
+            localStorage.setItem("jwttoken", JSON.stringify(res));
+        });
+        userService.login(authRequest).then((res) => {
+            localStorage.setItem("user", JSON.stringify(res));
+        })
         navigate("/");
-    }
+    };
 
     return (
         <div>
