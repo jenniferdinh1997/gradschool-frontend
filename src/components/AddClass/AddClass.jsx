@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddClass.css";
-import classService from "../../services/ClassService";
+import classService from "../../services/classService";
 
 const AddClass = () => {
     const user = JSON.parse(localStorage.getItem("user"));

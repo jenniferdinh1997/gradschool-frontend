@@ -1,38 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
 import "./Class.css";
+import classService from "../../services/classService";
 
 const Class = () => {
-    const [showMore, setShowMore] = useState(false);
-    const openTable = () => {
-        setShowMore(!showMore);
-    }
+  const [showMore, setShowMore] = useState(false);
+  const openTable = () => {
+    setShowMore(!showMore);
+  };
 
-    return (
-        <div className="class-container">
-            <table onClick={openTable}>
-                <tbody>
-                    <tr id="class-header">
-                        <td>BIOL 101</td>
-                        <td>UC Irvine</td>
-                        <td>4 units</td>
-                        <td id="delete-class"><FaRegTrashAlt /></td>
+  const [course, setCourse] = useState([]);
+
+  useEffect(() => {
+    classService.getClass().then((res) => {
+      setCourse(res.courses);
+    });
+  }, []);
+
+  return (
+    <div className="class-container">
+      <table onClick={openTable}>
+          {course.map((item, index) => {
+            return (
+              <tbody key={index}>
+                <tr id="class-header">
+                  <td>{item.name}</td>
+                  <td>{item.institution}</td>
+                  <td>{item.units}</td>
+                  <td id="delete-class">
+                    <FaRegTrashAlt />
+                  </td>
+                </tr>
+                {showMore ? (
+                  <>
+                    <tr>
+                      <td>Grade: {item.grade}</td>
                     </tr>
-                    {showMore ? (
-                        <>
-                            <tr>
-                                <td>Grade: A-</td>
-                            </tr>
-                            <tr>
-                                <td>Notes: </td>
-                            </tr>
-                        </>
-                    ): null}
-                </tbody>
-            </table>
-        </div>
-    )
-}
+                    <tr>
+                      <td colSpan={4}>Notes: {item.notes}</td>
+                    </tr>
+                  </>
+                ) : null}
+              </tbody>
+            );
+          })}
+      </table>
+    </div>
+  );
+};
 
 export default Class;

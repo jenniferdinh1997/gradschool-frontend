@@ -7,8 +7,14 @@ const addClass = async (course) => {
     return response.data;
 };
 
+const getClass = async () => {
+    const response = await axios.get(`${BASE_URL}/getClass`); 
+    return response.data;
+};
+
 const classService = {
-    addClass
+    addClass,
+    getClass
 };
 
 export default classService;

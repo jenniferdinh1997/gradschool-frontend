@@ -13,6 +13,12 @@ const addClass = async (req, res) => {
   res.status(201).json({ course: course });
 };
 
+const getClass = async (req, res) => {
+  const courses = await Class.find().exec();
+  res.status(201).json({ courses });
+}
+
 module.exports = {
   addClass,
+  getClass
 };
