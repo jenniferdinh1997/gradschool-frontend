@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddClass.css";
+import classService from "../../services/ClassService";
 
 const AddClass = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const [course, setCourse] = useState({
-        user: "",
+        user: user.message,
         subject: "",
         name: "",
         institution: "",
         units: 0,
+        grade: "",
         notes: ""
     });
 
@@ -18,17 +22,21 @@ const AddClass = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        classService.addClass(course).then((response) => {
+            console.log(response, "response")
+        })
     }
 
     const [isOpen, setIsOpen] = useState(true);
     const handleCancel = () => {
         setIsOpen(false);
         setCourse({
-            user: "",
+            user: user.message,
             subject: "",
             name: "",
             institution: "",
             units: 0,
+            grade: "",
             notes: ""
         })
     }
@@ -40,7 +48,7 @@ const AddClass = () => {
             <form onSubmit={handleSubmit}>
                 <section id="add-class-section">
                     <label>Subject</label>
-                    <select name="subject" onChange={handleCourseChange}>
+                    <select name="subject" value={course.subject} onChange={handleCourseChange}>
                         <option value="Biology">Biology</option>
                         <option value="Chemistry">Chemistry</option>
                         <option value="English">English</option>
@@ -80,7 +88,7 @@ const AddClass = () => {
                 </section>
                 <section id="add-class-section">
                     <label>Grade</label>
-                    <select name="grade" onChange={handleCourseChange}>
+                    <select name="grade" value={course.grade} onChange={handleCourseChange}>
                         <option value="A+">A+</option>
                         <option value="A">A</option>
                         <option value="A-">A</option>
