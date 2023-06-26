@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import "./AddClass.css";
 import classService from "../../services/classService";
 
-const AddClass = () => {
+const AddClass = ({setAddForm, courses}) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const [course, setCourse] = useState({
         user: user.message,
-        subject: "",
+        subject: "Biology",
         name: "",
         institution: "",
         units: 0,
-        grade: "",
+        grade: "A+",
         notes: ""
     });
 
@@ -27,9 +27,8 @@ const AddClass = () => {
         })
     }
 
-    const [isOpen, setIsOpen] = useState(true);
     const handleCancel = () => {
-        setIsOpen(false);
+        setAddForm(false);
         setCourse({
             user: user.message,
             subject: "",
@@ -43,12 +42,13 @@ const AddClass = () => {
 
     return (
         <>
-        {isOpen ? (
         <div className="add-class-container">
             <form onSubmit={handleSubmit}>
                 <section id="add-class-section">
                     <label>Subject</label>
-                    <select name="subject" value={course.subject} onChange={handleCourseChange}>
+                    <select name="subject" 
+                            value={course.subject} 
+                            onChange={handleCourseChange}>
                         <option value="Biology">Biology</option>
                         <option value="Chemistry">Chemistry</option>
                         <option value="English">English</option>
@@ -91,7 +91,7 @@ const AddClass = () => {
                     <select name="grade" value={course.grade} onChange={handleCourseChange}>
                         <option value="A+">A+</option>
                         <option value="A">A</option>
-                        <option value="A-">A</option>
+                        <option value="A-">A-</option>
                         <option value="B+">B+</option>
                         <option value="B">B</option>
                         <option value="B-">B-</option>
@@ -117,13 +117,12 @@ const AddClass = () => {
                     <button type="submit" id="add-class-submit-btn">
                         Save
                     </button>
-                    <button id="add-class-cancel-btn" onClick={handleCancel}>
+                    <button type="button" id="add-class-cancel-btn" onClick={handleCancel}>
                         Cancel
                     </button>
                 </div>
             </form>
         </div>
-        ) : null }
         </>
     )
 }

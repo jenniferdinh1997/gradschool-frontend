@@ -2,6 +2,7 @@
     width: 350px;
     border: 3px solid rgb(11, 169, 11);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.464);
+    margin: 20px 0px;
 }
 
 .class-container table {
