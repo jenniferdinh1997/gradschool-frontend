@@ -24,13 +24,33 @@ const getClass = async (req, res) => {
 };
 
 const deleteClass = async (req, res) => {
-  console.log(req, "body")
   try {
     await Class.findByIdAndRemove(req.params.id);
-    res.status(201).json({ message: "Class successfully removed!"});
+    res.status(201).json({ message: "Class successfully removed!" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Could not delete");
+  }
+};
+
+const updateClass = async (req, res) => {
+  try {
+    await Class.findByIdAndUpdate(
+      req.params.id,
+      {
+        subject: req.body.subject,
+        name: req.body.name,
+        institution: req.body.institution,
+        units: req.body.units,
+        grade: req.body.grade,
+        notes: req.body.notes,
+      },
+      {
+        returnOriginal: false,
+      }
+    );
+  } catch (err) {
+    res.status(500).json({ err });
   }
 };
 
@@ -38,4 +58,5 @@ module.exports = {
   addClass,
   getClass,
   deleteClass,
+  updateClass,
 };

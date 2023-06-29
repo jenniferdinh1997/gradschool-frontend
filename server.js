@@ -21,12 +21,17 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use("/api/class", require("./routes/api/class"));
 app.use("/api/users", require("./routes/api/users"));
 
-app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get("/cors", (req, res) => {
+  res.set("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.send({ msg: "This has CORS enabled 🎈" });
+});
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 const port = process.env.PORT || 3001;
 
 app.listen(port, function () {
-    console.log(`Express app listening on port ${port}`);
+  console.log(`Express app listening on port ${port}`);
 });

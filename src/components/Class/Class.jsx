@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { BiEditAlt } from "react-icons/bi";
 import "./Class.css";
+import EditClass from "../EditClass/EditClass";
 import classService from "../../services/classService";
 
-const Class = ({ course }) => {
+const Class = ({ course, setDeletedCourse, showEditCourse }) => {
   const [showMore, setShowMore] = useState(false);
   const openTable = () => {
     setShowMore(!showMore);
@@ -13,6 +15,7 @@ const Class = ({ course }) => {
   const [message, setMessage] = useState("");
 
   const removeCourse = (id) => {
+    setDeletedCourse(id);
     classService.deleteClass(id).then((res) => {
       setMessage(res.message);
     });
@@ -25,7 +28,10 @@ const Class = ({ course }) => {
           <tr id="class-header">
             <td>{course.name}</td>
             <td>{course.institution}</td>
-            <td>{course.units}</td>
+            <td>{course.units} units</td>
+            <td id="edit-class">
+              <BiEditAlt onClick={showEditCourse}/>
+            </td>
             <td id="delete-class">
               <FaRegTrashAlt onClick={() => removeCourse(course._id)} />
             </td>
@@ -36,7 +42,7 @@ const Class = ({ course }) => {
                 <td>Grade: {course.grade}</td>
               </tr>
               <tr>
-                <td colSpan={4}>Notes: {course.notes}</td>
+                <td colSpan={5}>Notes: {course.notes}</td>
               </tr>
             </>
           ) : null}

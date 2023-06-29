@@ -15,12 +15,18 @@ const getClass = async () => {
 const deleteClass = async (id) => {
     const response = await axios.delete(`${BASE_URL}/deleteClass/${id}`); 
     return response.data;
+};
+
+const updateClass = async(id, course) => {
+    const response = await axios.put(`${BASE_URL}/updateClass/${id}`, course);
+    return response.data;
 }
 
 const classService = {
     addClass,
     getClass,
-    deleteClass
+    deleteClass,
+    updateClass
 };
 
 export default classService;

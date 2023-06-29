@@ -5,28 +5,27 @@ import Footer from "../../components/Footer/Footer";
 import "./Md.css";
 
 const Md = () => {
-    useEffect(() => {
-        const api_url="https://zenquotes.io/api/quotes";
+  useEffect(() => {
+    const api_url = "https://zenquotes.io/api/today";
 
-        const getQuote = () => {
-            fetch(api_url)
-            .then((res) => res.json())
-        }
+    const getQuote = () => {
+      fetch(api_url)
+        .then((res) => res.json())
+        .then((data) => console.log(data, "data"));
+    };
 
-        getQuote();
-    })
+    getQuote();
+  }, []);
 
-    return (
-        <>
-            <SideNav />
-            <div className="home-tracker-container">
-                <h1>Welcome back, Name</h1>
-                <div className="quote-container">
-
-                </div>
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <SideNav />
+      <div className="home-tracker-container">
+        <h1>Welcome back, Name</h1>
+        <div className="quote-container"></div>
+      </div>
+    </>
+  );
+};
 
 export default Md;

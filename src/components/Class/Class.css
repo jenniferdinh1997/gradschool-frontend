@@ -11,13 +11,22 @@
     padding: 10px;
 }
 
-#delete-class {
+#delete-class, #edit-class {
     text-align: right;
     padding-right: 10px;
+    width: 5%;
+}
+
+#edit-class {
+    font-size: 18px;
 }
 
 #delete-class:hover {
     color: red;
+}
+
+#edit-class:hover {
+    color: #5fa8d3;
 }
 
 #class-header {

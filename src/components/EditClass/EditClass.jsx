@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./AddClass.css";
+import "./EditClass.css";
 import classService from "../../services/classService";
 
-const AddClass = ({setAddForm, setAddedCourse}) => {
+const EditClass = ({ setEditForm }) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const [course, setCourse] = useState({
@@ -23,13 +23,13 @@ const AddClass = ({setAddForm, setAddedCourse}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         classService.addClass(course).then((response) => {
-            setAddedCourse(response);
+            console.log(response, "edit course response");
         })
-        setAddForm(false);
+        setEditForm(false);
     }
 
     const handleCancel = () => {
-        setAddForm(false);
+        setEditForm(false);
         setCourse({
             user: user.message,
             subject: "",
@@ -45,6 +45,9 @@ const AddClass = ({setAddForm, setAddedCourse}) => {
         <>
         <div className="add-class-container">
             <form onSubmit={handleSubmit}>
+                <div>
+                    <p id="edit-class-title">Edit Class</p>
+                </div>
                 <section id="add-class-section">
                     <label>Subject</label>
                     <select name="subject" 
@@ -128,4 +131,4 @@ const AddClass = ({setAddForm, setAddedCourse}) => {
     )
 }
 
-export default AddClass;
+export default EditClass;
