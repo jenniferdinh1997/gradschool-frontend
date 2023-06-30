@@ -197,15 +197,16 @@ const Home = () => {
                                     )}
                                 </div>
                             </div>
+                            {/* TO DO: links for other fields */}
                             <button id="submit-field">
                                 {selectedOp === "dr" && selectedField === "md" && (
                                     <Link to="/tracker/dr/md">
                                         Help me get in!
                                     </Link>
                                 )}
-                                <Link to="/error">
+                                {/* <Link to="/error">
                                     Help me get in!
-                                </Link>
+                                </Link> */}
                             </button>
                         </div>
                     </div>

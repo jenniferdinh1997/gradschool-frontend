@@ -3,34 +3,34 @@ import { Link } from "react-router-dom";
 import "./EditClass.css";
 import classService from "../../services/classService";
 
-const EditClass = ({ setEditForm }) => {
+const EditClass = ({ setEditForm, course, setEditedCourse }) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    const [course, setCourse] = useState({
+    const [updatedCourse, setUpdatedCourse] = useState({
         user: user.message,
-        subject: "Biology",
-        name: "",
-        institution: "",
-        units: 0,
-        grade: "A+",
-        notes: ""
+        subject: course.subject,
+        name: course.name,
+        institution: course.institution,
+        units: course.units,
+        grade: course.grade,
+        notes: course.notes
     });
 
     const handleCourseChange = (e) => {
-        setCourse({...course, [e.target.name]: e.target.value});
+        setUpdatedCourse({...updatedCourse, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        classService.addClass(course).then((response) => {
-            console.log(response, "edit course response");
+        classService.updateClass(course._id, updatedCourse).then((response) => {
+            setEditedCourse(response);
         })
         setEditForm(false);
     }
 
     const handleCancel = () => {
         setEditForm(false);
-        setCourse({
+        setUpdatedCourse({
             user: user.message,
             subject: "",
             name: "",
@@ -51,7 +51,7 @@ const EditClass = ({ setEditForm }) => {
                 <section id="add-class-section">
                     <label>Subject</label>
                     <select name="subject" 
-                            value={course.subject} 
+                            value={updatedCourse.subject} 
                             onChange={handleCourseChange}>
                         <option value="Biology">Biology</option>
                         <option value="Chemistry">Chemistry</option>
@@ -68,7 +68,7 @@ const EditClass = ({ setEditForm }) => {
                     <input
                         type="text"
                         name="name"
-                        value={course.name}
+                        value={updatedCourse.name}
                         onChange={handleCourseChange}
                     />
                 </section>
@@ -77,7 +77,7 @@ const EditClass = ({ setEditForm }) => {
                     <input
                         type="text"
                         name="institution"
-                        value={course.institution}
+                        value={updatedCourse.institution}
                         onChange={handleCourseChange}
                     />
                 </section>
@@ -86,13 +86,13 @@ const EditClass = ({ setEditForm }) => {
                     <input
                         type="number"
                         name="units"
-                        value={course.units}
+                        value={updatedCourse.units}
                         onChange={handleCourseChange}
                     />
                 </section>
                 <section id="add-class-section">
                     <label>Grade</label>
-                    <select name="grade" value={course.grade} onChange={handleCourseChange}>
+                    <select name="grade" value={updatedCourse.grade} onChange={handleCourseChange}>
                         <option value="A+">A+</option>
                         <option value="A">A</option>
                         <option value="A-">A-</option>
@@ -113,7 +113,7 @@ const EditClass = ({ setEditForm }) => {
                     <input
                         type="text"
                         name="notes"
-                        value={course.notes}
+                        value={updatedCourse.notes}
                         onChange={handleCourseChange}
                     />
                 </section>

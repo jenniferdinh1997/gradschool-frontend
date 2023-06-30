@@ -24,12 +24,13 @@ const MdCourse = () => {
     const [course, setCourse] = useState([]);
     const [addedCourse, setAddedCourse] = useState({});
     const [deletedCourse, setDeletedCourse] = useState({});
+    const [editedCourse, setEditedCourse] = useState({});
 
     useEffect(() => {
       classService.getClass().then((res) => {
         setCourse(res.courses);
       });
-    }, [addedCourse, deletedCourse]);
+    }, [addedCourse, deletedCourse, editedCourse]);
 
     return (
       <>
@@ -50,6 +51,9 @@ const MdCourse = () => {
                   key={index}
                   setDeletedCourse={setDeletedCourse}
                   showEditCourse={showEditCourse}
+                  setEditForm={setEditForm}
+                  editForm={editForm}
+                  setEditedCourse={setEditedCourse}
                 />
               );
             })
@@ -58,9 +62,6 @@ const MdCourse = () => {
           )}
           {addForm ? (
             <AddClass setAddForm={setAddForm} setAddedCourse={setAddedCourse} />
-          ) : null}
-          {editForm ? (
-            <EditClass setEditForm={setEditForm} />
           ) : null}
           <p>Chemistry</p>
           <p>English</p>

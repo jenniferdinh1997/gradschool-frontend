@@ -35,7 +35,7 @@ const deleteClass = async (req, res) => {
 
 const updateClass = async (req, res) => {
   try {
-    await Class.findByIdAndUpdate(
+    const updatedCourse = await Class.findByIdAndUpdate(
       req.params.id,
       {
         subject: req.body.subject,
@@ -49,6 +49,7 @@ const updateClass = async (req, res) => {
         returnOriginal: false,
       }
     );
+    res.status(201).json({ course: updatedCourse});
   } catch (err) {
     res.status(500).json({ err });
   }
