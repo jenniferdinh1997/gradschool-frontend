@@ -4,7 +4,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { BiEditAlt } from "react-icons/bi";
 import "./Class.css";
 import EditClass from "../EditClass/EditClass";
-import classService from "../../services/classService";
+import classService from "../../services/ClassService";
 
 const Class = ({
   course,

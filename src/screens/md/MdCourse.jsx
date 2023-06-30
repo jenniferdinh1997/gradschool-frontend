@@ -4,10 +4,9 @@ import SideNav from "../../components/SideNav/SideNav";
 import Footer from "../../components/Footer/Footer";
 import Class from "../../components/Class/Class";
 import AddClass from "../../components/AddClass/AddClass";
-import EditClass from "../../components/EditClass/EditClass";
 import { MdAdd } from "react-icons/md";
 import "./MdCourse.css";
-import classService from "../../services/classService";
+import classService from "../../services/ClassService";
 
 const MdCourse = () => {
     const [addForm, setAddForm] = useState(false);

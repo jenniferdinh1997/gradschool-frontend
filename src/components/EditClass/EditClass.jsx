@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./EditClass.css";
-import classService from "../../services/classService";
+import classService from "../../services/ClassService";
 
 const EditClass = ({ setEditForm, course, setEditedCourse }) => {
     const user = JSON.parse(localStorage.getItem("user"));
