@@ -2,26 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideNav from "../../components/SideNav/SideNav";
 import Footer from "../../components/Footer/Footer";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+
 import "./Md.css";
 
 const Md = () => {
-  useEffect(() => {
-    const api_url = "https://zenquotes.io/api/today";
-
-    const getQuote = () => {
-      fetch(api_url)
-        .then((res) => res.json())
-        .then((data) => console.log(data, "data"));
-    };
-
-    getQuote();
-  }, []);
 
   return (
     <>
       <SideNav />
       <div className="home-tracker-container">
         <h1>Welcome back, Name</h1>
+        <ProgressBar />
         <div className="quote-container"></div>
       </div>
     </>
